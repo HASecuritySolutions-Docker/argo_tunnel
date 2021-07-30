@@ -3,7 +3,7 @@ FROM ubuntu:20.04
 MAINTAINER Justin Henderson justin@hasecuritysolutions.com
 
 RUN apt update \
-    && apt install wget -y \
+    && apt install wget curl -y \
     && wget https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.deb \
     && dpkg -i cloudflared-stable-linux-amd64.deb \
     && rm -f cloudflared-stable-linux-amd64.deb \
