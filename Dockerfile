@@ -4,9 +4,9 @@ MAINTAINER Justin Henderson justin@hasecuritysolutions.com
 
 RUN apt update \
     && apt install wget curl -y \
-    && wget https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.deb \
-    && dpkg -i cloudflared-stable-linux-amd64.deb \
-    && rm -f cloudflared-stable-linux-amd64.deb \
+    && wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb \
+    && dpkg -i cloudflared-linux-amd64.deb \
+    && rm -f cloudflared-linux-amd64.deb \
     && useradd -ms /bin/bash argo_tunnel \
     && touch /var/log/cloudflared.log \
     && chown argo_tunnel:argo_tunnel /var/log/cloudflared.log
