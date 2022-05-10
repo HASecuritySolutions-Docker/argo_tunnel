@@ -2,10 +2,10 @@ FROM ubuntu:22.04
 
 MAINTAINER Justin Henderson justin@hasecuritysolutions.com
 
-RUN apt update \
-    && apt install wget curl -y \
-    && wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb \
-    && dpkg -i cloudflared-linux-amd64.deb
+RUN apt update
+RUN apt install wget curl -y
+RUN wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
+RUN dpkg -i cloudflared-linux-amd64.deb
 RUN rm -f cloudflared-linux-amd64.deb
 RUN useradd -ms /bin/bash argo_tunnel
 RUN apt clean
