@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 MAINTAINER Justin Henderson justin@hasecuritysolutions.com
 
@@ -13,4 +13,4 @@ RUN apt update \
 USER argo_tunnel
 
 STOPSIGNAL SIGTERM
-CMD  /usr/local/bin/cloudflared -f --config /etc/cloudflared/config.yml --origincert /etc/cloudflared/cert.pem --no-autoupdate --metrics=0.0.0.0:3333
+CMD  /usr/local/bin/cloudflared -f --config /etc/cloudflared/config.yml --origincert /etc/cloudflared/cert.pem --metrics=0.0.0.0:3333
