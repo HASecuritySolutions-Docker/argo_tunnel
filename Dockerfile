@@ -5,11 +5,12 @@ MAINTAINER Justin Henderson justin@hasecuritysolutions.com
 RUN apt update \
     && apt install wget curl -y \
     && wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb \
-    && dpkg -i cloudflared-linux-amd64.deb \
-    && rm -f cloudflared-linux-amd64.deb \
-    && useradd -ms /bin/bash argo_tunnel \
-    && touch /var/log/cloudflared.log \
-    && chown argo_tunnel:argo_tunnel /var/log/cloudflared.log
+    && dpkg -i cloudflared-linux-amd64.deb
+RUN rm -f cloudflared-linux-amd64.deb
+RUN useradd -ms /bin/bash argo_tunnel
+RUN apt clean
+RUN touch /var/log/cloudflared.log
+RUN chown argo_tunnel:argo_tunnel /var/log/cloudflared.log
 USER argo_tunnel
 
 STOPSIGNAL SIGTERM
