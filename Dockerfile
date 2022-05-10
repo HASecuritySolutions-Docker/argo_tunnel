@@ -3,7 +3,7 @@ FROM ubuntu:22.04
 MAINTAINER Justin Henderson justin@hasecuritysolutions.com
 
 RUN apt update || true
-RUN apt install wget curl -y
+RUN apt install wget curl -y || true
 RUN wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
 RUN dpkg -i cloudflared-linux-amd64.deb
 RUN rm -f cloudflared-linux-amd64.deb
