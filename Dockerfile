@@ -2,15 +2,15 @@ FROM ubuntu:22.04
 
 MAINTAINER Justin Henderson justin@hasecuritysolutions.com
 
-RUN apt update || true
-RUN apt install wget curl -y || true
-RUN wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
-RUN dpkg -i cloudflared-linux-amd64.deb
-RUN rm -f cloudflared-linux-amd64.deb
-RUN useradd -ms /bin/bash argo_tunnel
-RUN apt clean
-RUN touch /var/log/cloudflared.log
-RUN chown argo_tunnel:argo_tunnel /var/log/cloudflared.log
+RUN apt update || true \
+  && apt install wget curl -y || true \
+  && wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb \
+  && dpkg -i cloudflared-linux-amd64.deb \
+  && rm -f cloudflared-linux-amd64.deb \
+  && useradd -ms /bin/bash argo_tunnel \
+  && apt clean \
+  && touch /var/log/cloudflared.log \
+  && chown argo_tunnel:argo_tunnel /var/log/cloudflared.log
 USER argo_tunnel
 
 STOPSIGNAL SIGTERM
