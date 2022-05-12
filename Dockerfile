@@ -14,4 +14,4 @@ RUN apt update || true \
 USER argo_tunnel
 
 STOPSIGNAL SIGTERM
-CMD  /usr/local/bin/cloudflared -f --config /etc/cloudflared/config.yml --origincert /etc/cloudflared/cert.pem --metrics=0.0.0.0:3333
+CMD  /usr/local/bin/cloudflared -f --config /etc/cloudflared/config.yml --origincert /etc/cloudflared/cert.pem --metrics=0.0.0.0:3333 --no-autoupdate
