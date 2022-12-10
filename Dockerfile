@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:rolling
 
 MAINTAINER Justin Henderson justin@hasecuritysolutions.com
 
